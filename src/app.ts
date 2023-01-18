@@ -1,21 +1,24 @@
-import mongoose, { ConnectOptions } from "mongoose";
-import dotenv from "dotenv";
-import express,{Request, Response} from "express";
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const express = require("express");
 import {router} from "./routes/routes";
 
 dotenv.config();
 const app = express()
-app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
 mongoose.connect(
-   process.env.MONGODB_URL as string,
+   process.env.MONGODB_URL,
    {
       useUnifiedTopology: true,
       useNewUrlParser: true,
-   } as ConnectOptions,
-   () => {
-      console.log("DB Connected");
+   },
+   (error: any) => {
+      if(error){
+         console.log("Error...");
+      } else{
+         console.log("DB Connected");
+      }
    }
 )
 

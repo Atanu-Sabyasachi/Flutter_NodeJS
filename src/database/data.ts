@@ -4,7 +4,7 @@
 
 // dotenv.config()
 
-// export const mongoDBConnection = () => mongodb.connect(
+// export const mongoDBConnection = async() => mongodb.connect(
 //     process.env.MONGODB_URL as string,
 //     {
 //         useUnifiedTopology : true
